@@ -4,7 +4,7 @@ output "conditional_access_policies_id" {
 }
 output "conditional_access_policies_conditions" {
   description = "Map of conditions values across all conditional_access_policies, keyed the same as var.conditional_access_policies"
-  value       = { for k, v in azuread_conditional_access_policy.conditional_access_policies : k => v.conditions if v.conditions != null && length(v.conditions) > 0 }
+  value       = { for k, v in azuread_conditional_access_policy.conditional_access_policies : k => one(v.conditions) if v.conditions != null && length(v.conditions) > 0 }
 }
 output "conditional_access_policies_display_name" {
   description = "Map of display_name values across all conditional_access_policies, keyed the same as var.conditional_access_policies"
@@ -12,7 +12,7 @@ output "conditional_access_policies_display_name" {
 }
 output "conditional_access_policies_grant_controls" {
   description = "Map of grant_controls values across all conditional_access_policies, keyed the same as var.conditional_access_policies"
-  value       = { for k, v in azuread_conditional_access_policy.conditional_access_policies : k => v.grant_controls if v.grant_controls != null && length(v.grant_controls) > 0 }
+  value       = { for k, v in azuread_conditional_access_policy.conditional_access_policies : k => one(v.grant_controls) if v.grant_controls != null && length(v.grant_controls) > 0 }
 }
 output "conditional_access_policies_object_id" {
   description = "Map of object_id values across all conditional_access_policies, keyed the same as var.conditional_access_policies"
@@ -20,7 +20,7 @@ output "conditional_access_policies_object_id" {
 }
 output "conditional_access_policies_session_controls" {
   description = "Map of session_controls values across all conditional_access_policies, keyed the same as var.conditional_access_policies"
-  value       = { for k, v in azuread_conditional_access_policy.conditional_access_policies : k => v.session_controls if v.session_controls != null && length(v.session_controls) > 0 }
+  value       = { for k, v in azuread_conditional_access_policy.conditional_access_policies : k => one(v.session_controls) if v.session_controls != null && length(v.session_controls) > 0 }
 }
 output "conditional_access_policies_state" {
   description = "Map of state values across all conditional_access_policies, keyed the same as var.conditional_access_policies"
